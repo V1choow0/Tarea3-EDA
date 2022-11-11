@@ -1,0 +1,38 @@
+Ejercicio 1:
+  Usar grafos tipo mapa con numeros enteros en vez de string (opcional) para las canciones
+  Una vez armado el mapa utilizar un BFS
+  
+     MAP<key, VALUE>
+     Distancia(Cantante1-Cantante2)
+     
+     SE PUEDE OCUPAR CUALQUIER LIBRERIA
+     
+Ejercicio 2:
+  armar arbol con nodos
+  se recorre el arbol por niveles para sacar la suma mayor
+  Utilzar una variable MAXIMO
+  Utilizar cola
+  utilizar BFS
+  
+Ejercicio 3 (BONUS):
+  deben estar apilados por diferencia minima
+  Heap
+  lower bound
+  upper bound
+  
+  *//
+DFS (stack) y BFS (cola)
+
+Func InOrder(Node root){
+  if(root == null){
+    return;
+    }
+  InOrder(root.Left);
+  Print(root.Val);
+  InOrder(root.Right);
+  }
+  
+  representar grafos con matriz de adyaciencia
+  
+  DFS "va hacia abajo"
+  BFS va por niveles de profundidad del arbol
