@@ -1,0 +1,67 @@
+class Ejercicio3 {
+ 
+	private static int valorMinimoRango(
+		int[] cCubos, int[] cubos)
+	{
+ 
+		// Almacena la cantidad de cCubos
+		int n = cCubos.length;
+ 
+		// Almacena la cantidad de cubos
+		int m = cubos.length;
+ 
+		// Inicia la distancia desde la izquierda
+		int valorIzquierda = Integer.MIN_VALUE;
+ 
+		// Inicia la distancia desde la derecha
+		int valorDerecha = cubos[0];
+ 
+		// j: Indice de cCubos[]
+		// k: Indice de cubos[]
+		int j = 0, k = 0;
+ 
+		// Almacena el valor minimo requerido 
+		int rangoMin = 0;
+ 
+		while (j < n) {
+			if (cCubos[j] < valorDerecha) {
+ 
+				int izquierda = cCubos[j] - valorIzquierda;
+				int derecha = valorDerecha - cCubos[j];
+ 
+				// Compara las distancias
+				int valorMax = izquierda < derecha ? izquierda : derecha;
+ 
+				if (valorMax > rangoMin)
+ 
+					// Actualiza el valor minimo
+					rangoMin = valorMax;
+				j++;
+			}
+			else {
+ 
+				// Acutaliza el valor desde la izquierda
+				valorIzquierda = cubos[k];
+ 
+				if (k < m - 1) {
+ 
+					k++;
+					// Actualiza el valor de la derecha
+					valorDerecha = cubos[k];
+				}
+				else
+					valorDerecha = Integer.MAX_VALUE;
+			}
+		}
+		return rangoMin;
+	}
+ 
+	// Codigo principal
+	public static void main(String[] args)
+	{
+		int[] a = {1,2,3,4,5};
+		int[] b = {3,8,2,1,5};
+		int max = valorMinimoRango(a, b);
+		System.out.println(max);
+	}
+}
