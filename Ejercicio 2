@@ -1,0 +1,73 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Prueba{
+static class Nodo
+{
+	int datos;
+	Nodo izquierda, derecha;
+
+	public Nodo(int datos)
+	{
+		this.datos = datos;
+		this.izquierda = this.derecha = null;
+	}
+};
+
+// Definir función para buscar el valor máximo
+static int sumaTotal(Nodo raiz)
+{
+	
+	// Base total, cuando el nodo es nulo
+	if (raiz == null)
+		return 0;
+
+	// Se definen los valores para el resultado final
+	int resultadoT = raiz.datos;
+
+	// Verifica el valor de los nodos en todos los niveles
+	Queue<Nodo> q = new LinkedList<>();
+	q.add(raiz);
+	while (!q.isEmpty())
+	{
+		
+		// Conteo 
+		int contador = q.size();
+
+		// Iteración para todos los nodos
+		int sumaCont = 0;
+		while (contador-- > 0)
+		{
+		
+			Nodo temp = q.poll();
+
+			// Acumulador de suma
+			sumaCont = sumaCont + temp.datos;
+
+			// Enlista cada valor, izquierda o derecha.
+			if (temp.izquierda != null)
+				q.add(temp.izquierda);
+			if (temp.derecha != null)
+				q.add(temp.derecha);
+		}
+
+		// Actualiza el valor del nodo maximo
+		resultadoT = Math.max(sumaCont, resultadoT);
+	}
+	return resultadoT;
+}
+
+// Codigo principal
+public static void main(String[] args)
+{
+	Nodo raiz = new Nodo(4);
+		raiz.izquierda = new Nodo(2);
+		raiz.derecha = new Nodo(49);
+		raiz.izquierda.izquierda = new Nodo(1);
+		raiz.izquierda.derecha = new Nodo(3);
+		raiz.derecha.izquierda = new Nodo(9);
+		raiz.derecha.izquierda.izquierda = new Nodo(5);
+	System.out.println("La suma del nivel maximo es " +
+						sumaTotal(raiz));
+}
+}
